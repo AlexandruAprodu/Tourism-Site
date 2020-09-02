@@ -1,10 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "tinfo/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
 
-</body>
-</html>
+    <form id="post_form" method="post" action="{% url 'unitate_cazare:inscriere_unitate' %}" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        {% for hidden in postForm.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+        <p>Tip Proprietate</p>
+        {{ postForm.tip_proprietate }}
+        <br/>
+        <p>Nume Proprietate</p>
+        {{ postForm.nume_proprietate }}
+        <br/>
+        <p>Judet</p>
+        {{ postForm.judet }}
+        <br/>
+        <p>Localitatea</p>
+        {{ postForm.localitatea }}
+        <br/>
+        <p>Strada</p>
+        {{ postForm.strada }}
+        <br/>
+        <p>Numele strazii</p>
+        {{ postForm.numele_strazii }}
+        <br/>
+        <p>Numar</p>
+        {{ postForm.numar }}
+        <br/>
+        <p>Numar Total Camere</p>
+        {{ postForm.nr_total_camere }}
+        <br/>
+        <p>Numar Total Locurei</p>
+        {{ postForm.nr_total_locuri }}
+        <br/>
+        <p>Descriere Proprietate</p>
+        {{ postForm.descriere_proprietate }}
+        <br/>
+        <p>Forma Client</p>
+        {{ postForm.forma_client }}
+        <br/>
+        <p>Numar Telefon</p>
+        {{ postForm.numar_telefon }}
+        <br/>
+        <p>Email Client</p>
+        {{ postForm.email_client }}
+        <br/>
+
+
+
+        {{ formset.management_form }}
+        {% for form in formset %}
+            {{ form|crispy }}
+        {% endfor %}
+
+
+        <input type="submit" name="submit" value="Submit" />
+    </form>
+{% endblock %}
