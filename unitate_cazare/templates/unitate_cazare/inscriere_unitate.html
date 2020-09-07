@@ -33,7 +33,7 @@
         <p>Numar Total Camere</p>
         {{ postForm.nr_total_camere }}
         <br/>
-        <p>Numar Total Locurei</p>
+        <p>Numar Total Locuri</p>
         {{ postForm.nr_total_locuri }}
         <br/>
         <p>Descriere Proprietate</p>
@@ -42,6 +42,9 @@
         <p>Forma Client</p>
         {{ postForm.forma_client }}
         <br/>
+        <p>Nume Client</p>
+        {{ postForm.nume_client }}
+        <br/>
         <p>Numar Telefon</p>
         {{ postForm.numar_telefon }}
         <br/>
@@ -49,14 +52,16 @@
         {{ postForm.email_client }}
         <br/>
 
-
-
         {{ formset.management_form }}
         {% for form in formset %}
             {{ form|crispy }}
         {% endfor %}
 
+        <button type="submit" class="btn">Sign Up</button>
 
-        <input type="submit" name="submit" value="Submit" />
+<!--        <input type="submit" name="submit" value="Submit" />-->
     </form>
 {% endblock %}
+
+
+

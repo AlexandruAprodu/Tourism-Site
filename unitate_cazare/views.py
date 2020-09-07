@@ -5,12 +5,12 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .forms import UnitateCazareForm, ImageForm
 from .models import Images
-
+from django.urls import reverse
 
 @login_required
 def unitate_cazare(request):
     ImageFormSet = modelformset_factory(Images,
-                                        form=ImageForm, extra=10)
+                                        form=ImageForm, extra=1)
     # 'extra' means the number of photos that you can upload   ^
     if request.method == 'POST':
 
@@ -32,11 +32,17 @@ def unitate_cazare(request):
                     photo.save()
             messages.success(request,
                              "Yeeew, check it out on the home page!")
-            return HttpResponseRedirect("/")
+            return HttpResponseRedirect(reverse('tinfo:index'))
         else:
-            print(postForm.errors, formset.errors)
+            print('A intrat in erori')
+            print(postForm.errors, 'post erori', formset.errors, 'formset erori')
     else:
         postForm = UnitateCazareForm()
         formset = ImageFormSet(queryset=Images.objects.none())
     return render(request, 'unitate_cazare/inscriere_unitate.html',
                   {'postForm': postForm, 'formset': formset})
+
+
+
+# def ultimele_locatii(request):
+#     ultimele_cinci =
