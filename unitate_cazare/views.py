@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .forms import UnitateCazareForm, ImageForm
-from .models import Images
+from .models import Images, UnitateCazare
 from django.urls import reverse
 
 @login_required
@@ -31,17 +31,21 @@ def unitate_cazare(request):
                     photo = Images(post=post_form, image=image)
                     photo.save()
             messages.success(request,
-                             "Yeeew, check it out on the home page!")
+                             "Felicitari! Locatia a fost inregistrata!")
             return HttpResponseRedirect(reverse('tinfo:index'))
         else:
             print('A intrat in erori')
-            print(postForm.errors, 'post erori', formset.errors, 'formset erori')
+            print(postForm.errors, formset.errors)
     else:
         postForm = UnitateCazareForm()
         formset = ImageFormSet(queryset=Images.objects.none())
     return render(request, 'unitate_cazare/inscriere_unitate.html',
                   {'postForm': postForm, 'formset': formset})
 
+
+# def judete(request):
+#     context = UnitateCazare.objects.all()
+#     return render(request, 'unitate_cazare/judete_cazare.html', {'context': context})
 
 
 # def ultimele_locatii(request):

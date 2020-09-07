@@ -5,6 +5,13 @@ from django.template.defaultfilters import slugify
 # Create your models here.
 
 
+class Judete(models.Model):
+    judet = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.judet
+
+
 class UnitateCazare(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     TIP_PROPRIETATE_CHOICES = (
@@ -17,23 +24,24 @@ class UnitateCazare(models.Model):
     )
     tip_proprietate = models.CharField(max_length=40, choices=TIP_PROPRIETATE_CHOICES)
     nume_proprietate = models.CharField(max_length=100)
-    JUDET_CHOICES = (
-        ('ALBA', 'Alba'), ('ARAD', 'Arad'), ('ARGES', 'Argeș'),
-        ('BACAU', 'Bacău'), ('BIHOR', 'Bihor'), ('BISTRITA-NASAUD', 'Bistrița-Năsăud'), ('BOTOSANI', 'Botoșani'), ('BRASOV', 'Brașov'), ('BRAILA', 'Brăila'), ('BUCURESTI', 'Bucuresti'), ('BUZAU', 'Buzău'), ('CARAS-SEVERIN', 'Caraș-Severin'), ('CALARASI', 'Călărași'), ('CLUJ', 'Cluj'), ('CONSTANTA', 'Constanța'),
-        ('COVASNA', 'Covasna'),
-        ('DAMBOVITA', 'Dâmbovița'), ('DOLJ', 'Dolj'),
-        ('GALATI', 'Galați'), ('GIURGIU', 'Giurgiu'), ('GORJ', 'Gorj'),
-        ('HARGHITA', 'Harghita'), ('HUNEDOARA', 'Hunedoara'),
-        ('IALOMITA', 'Ialomița'), ('IASI', 'Iași'), ('ILFOV', 'Ilfov'),
-        ('MARAMURES', 'Maramureș'), ('MEHEDINTI', 'Mehedinți'), ('MURES', 'Mureș'),
-        ('NEAMT', 'Neamț'),
-        ('OLT', 'Olt'),
-        ('PRAHOVA', 'Prahova'),
-        ('SATU MARE', 'Satu Mare'), ('SALAJ', 'Sălaj'), ('SIBIU', 'Sibiu'), ('SUCEAVA', 'Suceava'),
-        ('TELEORMAN', 'Teleorman'), ('TIMIS', 'Timiș'), ('TULCEA', 'Tulcea'),
-        ('VASLUI', 'Vaslui'), ('VALCEA', 'Vâlcea'), ('VRANCEA', 'Vrancea'),
-    )
-    judet = models.CharField(max_length=40, choices=JUDET_CHOICES)
+    # JUDET_CHOICES = (
+    #     ('ALBA', 'Alba'), ('ARAD', 'Arad'), ('ARGES', 'Argeș'),
+    #     ('BACAU', 'Bacău'), ('BIHOR', 'Bihor'), ('BISTRITA-NASAUD', 'Bistrița-Năsăud'), ('BOTOSANI', 'Botoșani'), ('BRASOV', 'Brașov'), ('BRAILA', 'Brăila'), ('BUCURESTI', 'Bucuresti'), ('BUZAU', 'Buzău'), ('CARAS-SEVERIN', 'Caraș-Severin'), ('CALARASI', 'Călărași'), ('CLUJ', 'Cluj'), ('CONSTANTA', 'Constanța'),
+    #     ('COVASNA', 'Covasna'),
+    #     ('DAMBOVITA', 'Dâmbovița'), ('DOLJ', 'Dolj'),
+    #     ('GALATI', 'Galați'), ('GIURGIU', 'Giurgiu'), ('GORJ', 'Gorj'),
+    #     ('HARGHITA', 'Harghita'), ('HUNEDOARA', 'Hunedoara'),
+    #     ('IALOMITA', 'Ialomița'), ('IASI', 'Iași'), ('ILFOV', 'Ilfov'),
+    #     ('MARAMURES', 'Maramureș'), ('MEHEDINTI', 'Mehedinți'), ('MURES', 'Mureș'),
+    #     ('NEAMT', 'Neamț'),
+    #     ('OLT', 'Olt'),
+    #     ('PRAHOVA', 'Prahova'),
+    #     ('SATU MARE', 'Satu Mare'), ('SALAJ', 'Sălaj'), ('SIBIU', 'Sibiu'), ('SUCEAVA', 'Suceava'),
+    #     ('TELEORMAN', 'Teleorman'), ('TIMIS', 'Timiș'), ('TULCEA', 'Tulcea'),
+    #     ('VASLUI', 'Vaslui'), ('VALCEA', 'Vâlcea'), ('VRANCEA', 'Vrancea'),
+    # )
+    judet = models.ForeignKey(Judete, on_delete=models.PROTECT)
+        # models.CharField(max_length=40, choices=JUDET_CHOICES)
 
     localitatea = models.CharField(max_length=50)
     STRADA_CHOICES = (
@@ -71,6 +79,6 @@ class UnitateCazare(models.Model):
 
 class Images(models.Model):
     post = models.ForeignKey(UnitateCazare, default=None, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='touristinfo/media',
+    image = models.ImageField(upload_to='media',
                               verbose_name='Image')
 
