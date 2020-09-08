@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .forms import UnitateCazareForm, ImageForm
-from .models import Images, UnitateCazare
+from .models import Images, UnitateCazare, Judete
 from django.urls import reverse
 
 @login_required
@@ -43,10 +43,11 @@ def unitate_cazare(request):
                   {'postForm': postForm, 'formset': formset})
 
 
-# def judete(request):
-#     context = UnitateCazare.objects.all()
-#     return render(request, 'unitate_cazare/judete_cazare.html', {'context': context})
+def judete(request):
+    context = Judete.objects.all()
+    return render(request, 'unitate_cazare/judete_cazare.html', {'context': context})
 
 
-# def ultimele_locatii(request):
-#     ultimele_cinci =
+def category(request, category_judet):
+    context1 = UnitateCazare.objects.filter(judet_id=category_judet)
+    return render(request, 'unitate_cazare/lista_locatii_din_judet.html', {'context1': context1})

@@ -5,6 +5,8 @@ app_name = 'unitate_cazare'
 
 urlpatterns = [
     path('inscriere_unitate/', unitate_cazare_views.unitate_cazare, name='inscriere_unitate'),
-    # path('judete/', unitate_cazare_views.judete, name='judete_cazare')
+    path('judete/', unitate_cazare_views.judete, name='judete'),
+    path('<int:category_judet>/', unitate_cazare_views.category, name='locatii_din_judet'),
+
 
 ]

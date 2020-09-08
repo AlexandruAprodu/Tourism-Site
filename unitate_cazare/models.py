@@ -1,15 +1,26 @@
 from django.db import models
 from django.core.validators import RegexValidator
 from django.contrib.auth.models import User
+from PIL import Image
 from django.template.defaultfilters import slugify
 # Create your models here.
 
 
 class Judete(models.Model):
     judet = models.CharField(max_length=100)
+    imagine_judet = models.ImageField(upload_to='media', default=None)
 
     def __str__(self):
         return self.judet
+
+    def save(self, *args, **kwargs):
+        super(Judete, self).save(*args, **kwargs)
+
+        img = Image.open(self.picture.path)
+        if img.height > 30 or img.width > 30:
+            output_size = (30, 30)
+            img.thumbnail(output_size)
+            img.save(self.picture.path)
 
 
 class UnitateCazare(models.Model):

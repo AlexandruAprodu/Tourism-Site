@@ -1,5 +1,17 @@
 {% extends "tinfo/base.html" %}
 {% load static %}
 {% block content %}
+    {% for judet in context %}
+        <a href="{% url 'unitate_cazare:locatii_din_judet' judet.id %}" class="card-link">
 
+            <div class="card_2">
+              <h4>{{judet.judet}}</h4>
+              <div class="card_image">
+                <img src="{{ judet.imagine_judet.url }}" />
+                </div>
+              <div class="card_title1 title-white">
+              </div>
+            </div>
+        </a>
+    {% endfor %}
 {% endblock %}
