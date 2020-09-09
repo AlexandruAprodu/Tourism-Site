@@ -66,12 +66,20 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 10px 7px rgba(0,0,0,0.2
   }
 }
 
-    .product_detail{
-        padding-bottom:auto;
-        background-color:#d9d9d9;
-        margin: 0% 10% 0% 40%;
-        width: 700px;
-        height: 1000px;
-        display: inline-block;
-        align: center;
-    }
+.product_detail{
+    padding-bottom:auto;
+    background-color:#d9d9d9;
+    margin: 0% 10% 0% 40%;
+    width: 700px;
+    height: 1000px;
+    display: inline-block;
+    align: center;
+}
+.carousel-item {
+  width: 200px;
+  height: 200px !important;
+}
+.carousel-inner{
+  width: 200px;
+  height: 200px !important;
+}

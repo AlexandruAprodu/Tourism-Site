@@ -1,10 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "tinfo/base.html" %}
+{% load static %}
+{% block content %}
 
-</body>
-</html>
+    <p>{{ unitate.tip_proprietate }}</p>
+    {{ unitate.nume_proprietate }}
+    {{ unitate.localitatea }}
+    {{ unitate.strada }}
+    {{ unitate.numele_strazii }}
+    {{ unitate.numar }}
+    {{ unitate.nr_total_camere }}
+    {{ unitate.nr_total_locuri }}
+    {{ unitate.descriere_proprietate }}
+    {{ unitate.nume_client }}
+    {{ unitate.numar_telefon }}
+    {{ unitate.email_client }}
+    {{ judet.judet }}
+<!--Carousel Wrapper-->
+<div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+  <!--Indicators-->
+  <ol class="carousel-indicators">
+    {% for imagine in imagini_unitate %}
+    <li data-target="#carousel-example-1z" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.counter0 == 0 %} active {% endif %}"></li>
+    {% endfor %}
+
+  </ol>
+  <!--/.Indicators-->
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox">
+        <!--First slide-->
+        {% for imagine in imagini_unitate %}
+        <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+          <img class="d-block w-100" src="{{ imagine.image.url }}"
+            alt="First slide">
+        </div>
+        {% endfor %}
+        <!--/First slide-->
+
+      </div>
+      <!--/.Slides-->
+      <!--Controls-->
+      <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+      <!--/.Controls-->
+  </div>
+<!--/.Carousel Wrapper-->
+<!--    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">-->
+<!--      <ol class="carousel-indicators">-->
+<!--        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>-->
+<!--        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>-->
+<!--        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>-->
+<!--      </ol>-->
+<!--      <div class="carousel-inner">-->
+
+<!--        {% for imagine in imagini_unitate %}-->
+<!--          {{ loop }}-->
+<!--        <div class="carousel-item item-{{ loop.index }} {% if loop.first %} active {% endif %}">-->
+<!--          <img class="d-block w-100" src="{{ imagine.image.url}}" alt="Second slide">-->
+<!--        </div>-->
+<!--        {% endfor %}-->
+
+<!--      </div>-->
+<!--      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">-->
+<!--        <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+<!--        <span class="sr-only">Previous</span>-->
+<!--      </a>-->
+<!--      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">-->
+<!--        <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+<!--        <span class="sr-only">Next</span>-->
+<!--      </a>-->
+<!--    </div>-->
+
+{% endblock %}

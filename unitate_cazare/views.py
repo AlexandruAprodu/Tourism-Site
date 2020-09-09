@@ -7,14 +7,15 @@ from .forms import UnitateCazareForm, ImageForm
 from .models import Images, UnitateCazare, Judete
 from django.urls import reverse
 
+
 @login_required
 def unitate_cazare(request):
+
     ImageFormSet = modelformset_factory(Images,
-                                        form=ImageForm, extra=1)
-    # 'extra' means the number of photos that you can upload   ^
+                                        form=ImageForm, extra=5)
     if request.method == 'POST':
 
-        postForm = UnitateCazareForm(request.POST)
+        postForm = UnitateCazareForm(request.POST, request.FILES)
         formset = ImageFormSet(request.POST, request.FILES,
                                queryset=Images.objects.none())
 
@@ -51,3 +52,14 @@ def judete(request):
 def category(request, category_judet):
     context1 = UnitateCazare.objects.filter(judet_id=category_judet)
     return render(request, 'unitate_cazare/lista_locatii_din_judet.html', {'context1': context1})
+
+
+def detail(request, id_locatie):
+    # unitate detail
+    unitate = UnitateCazare.objects.get(id=id_locatie)
+    # image detail
+    imagini_unitate =Images.objects.filter(post_id=unitate.id)
+    # print(imagini_unitate)
+    judet_unitate = Judete.objects.get(id=unitate.judet_id)
+    return render(request, 'unitate_cazare/locatie_detail.html', {'unitate': unitate, 'imagini_unitate': imagini_unitate,
+                                                                  'judet_unitate': judet_unitate})

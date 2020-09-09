@@ -3,7 +3,7 @@
 {% block content %}
 
     {% for locatii in context1 %}
-        {{ locatii.nume_proprietate }}
+        <a href="{% url 'unitate_cazare:locatie_detail' locatii.id %}">{{ locatii.nume_proprietate }}</a>
         {{ locatii.localitatea }}
         {{ locatii.numele_strazii }}
         {{ locatii.numar }}
@@ -12,6 +12,9 @@
         {{ locatii.email_client }}
         {{ locatii.nr_total_camere }}
         {{ locatii.nr_total_locuri }}
-    {% endfor %}
+        <img src="{{ locatii.poza_prezentare.url }}" />
+
+
+    {% endfor context1 %}
 
 {% endblock %}
