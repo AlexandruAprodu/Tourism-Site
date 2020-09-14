@@ -25,8 +25,6 @@ def unitate_cazare(request):
             post_form.save()
 
             for form in formset.cleaned_data:
-                # this helps to not crash if the user
-                # do not upload all the photos
                 if form:
                     image = form['image']
                     photo = Images(post=post_form, image=image)
@@ -35,7 +33,6 @@ def unitate_cazare(request):
                              "Felicitari! Locatia a fost inregistrata!")
             return HttpResponseRedirect(reverse('tinfo:index'))
         else:
-            print('A intrat in erori')
             print(postForm.errors, formset.errors)
     else:
         postForm = UnitateCazareForm()

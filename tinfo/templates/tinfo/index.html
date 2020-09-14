@@ -83,23 +83,21 @@
                     </div>
                 </div>
             </div>
-
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        {% for destination in popular_destination %}
-                            <div class="single_destination">
-                                <div class="thumb">
-                                    <img src="{{ destination.image.url }}" alt="">
-                                </div>
-                                <div class="content">
-                                    <p class="d-flex align-items-center">{{ destination.nume_judet }} <a href="{% url 'unitate_cazare:locatii_judet' destination.nume_judet_id %}">CLICK</a> </p>
-
-                                </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    {% for destination in popular_destination %}
+                        <div class="single_destination">
+                            <div class="thumb">
+                                <img src="{{ destination.image.url }}" alt="">
                             </div>
-                        {% endfor %}
-                    </div>
-                </div>
+                            <div class="content">
+                                <p class="d-flex align-items-center">{{ destination.nume_judet }} <a href="{% url 'unitate_cazare:locatii_judet' destination.nume_judet_id %}">CLICK</a> </p>
 
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
     <!-- popular_destination_area_end  -->
@@ -152,7 +150,7 @@
             <div class="row">
                 <div class="col-lg-16">
                     <div class="row">
-                        {% for locatii in context2 %}
+                        {% for locatii in locatii_random %}
                                 <div class="col-lg-3 col-md-3">
                                     <div class="single_place">
                                         <div class="thumb">

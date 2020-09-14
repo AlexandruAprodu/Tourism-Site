@@ -29,6 +29,8 @@
 
     <link rel="stylesheet" href="{% static 'tinfo/css/style.css' %}">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+
+
 </head>
 
 <body>
@@ -180,17 +182,13 @@
                     <div class="col-xl-3 col-md-6 col-lg-3">
                         <div class="footer_widget">
                             <h3 class="footer_title">
-                                Popular destination
+                                Popular destinations
                             </h3>
                             <ul class="links double_links">
-                                <li><a href="#">Indonesia</a></li>
-                                <li><a href="#">America</a></li>
-                                <li><a href="#">India</a></li>
-                                <li><a href="#">Switzerland</a></li>
-                                <li><a href="#">Italy</a></li>
-                                <li><a href="#">Canada</a></li>
-                                <li><a href="#">Franch</a></li>
-                                <li><a href="#">England</a></li>
+                                {% for judet in popular_destination %}
+                                    <li><a href="{% url 'unitate_cazare:locatii_judet' judet.nume_judet_id %}">{{ judet.nume_judet }}</a></li>
+
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>

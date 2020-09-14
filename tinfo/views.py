@@ -9,10 +9,16 @@ import random
 def index(request):
     popular_destination = PopularDestination.objects.all()
     context1 = UnitateCazare.objects.all()
-    context2 = random.choices(context1, k=8)
+    locatii_random = random.choices(context1, k=8)
     # unitati_cazare = UnitateCazare.objects.filter(judet_id=popular_destination.nume_judet)
     return render(request, 'tinfo/index.html',
-                  {'popular_destination': popular_destination, 'context2': context2})
+                  {'popular_destination': popular_destination, 'locatii_random': locatii_random})
+
+
+def footer(request):
+    popular_destination = PopularDestination.objects.all()
+    return render(request, 'tinfo/base.html',
+                  {'popular_destination': popular_destination})
 
 
 def contact(request):
