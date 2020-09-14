@@ -1,0 +1,45 @@
+{% extends "tinfo/base.html" %}
+{% load static %}
+{% block content %}
+
+    <div class="popular_places_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-16">
+                    <div class="row">
+                        {% for locatii in unitati_cazare %}
+                            <div class="col-lg-3 col-md-3">
+                                <div class="single_place">
+                                    <div class="thumb">
+                                        <img src="{{ locatii.poza_prezentare.url }}" alt="">
+                                        <a href="#" class="prise">$500</a>
+                                    </div>
+                                    <div class="place_info">
+                                        <a href="{% url 'unitate_cazare:destination_details' locatii.id %}"><h3>{{ locatii.nume_proprietate }}</h3></a>
+                                        <p>{{ locatii.localitatea }}</p>
+                                        <div class="rating_days d-flex justify-content-between">
+                                            <span class="d-flex justify-content-center align-items-center">
+                                                 <i class="fa fa-star"></i>
+                                                 <i class="fa fa-star"></i>
+                                                 <i class="fa fa-star"></i>
+                                                 <i class="fa fa-star"></i>
+                                                 <i class="fa fa-star"></i>
+                                                 <a href="#">(20 Review)</a>
+                                            </span>
+                                            <div class="days">
+                                                <i class="fa fa-clock-o"></i>
+                                                <a href="#">5 Days</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% empty %}
+                            <h4>No results found</h4>
+                        {% endfor unitati_cazare %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

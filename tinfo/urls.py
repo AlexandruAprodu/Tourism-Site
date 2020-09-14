@@ -6,4 +6,6 @@ app_name = 'tinfo'
 urlpatterns = [
     path('', tinfo_views.index, name='index'),
     path('contact/', tinfo_views.contact, name='contact'),
+    path('about/', tinfo_views.about, name='about'),
+    path('results/', tinfo_views.SearchView.as_view(), name='search'),
 ]

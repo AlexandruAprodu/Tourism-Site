@@ -49,9 +49,9 @@ def judete(request):
     return render(request, 'unitate_cazare/judete_cazare.html', {'context': context})
 
 
-def category(request, category_judet):
-    context1 = UnitateCazare.objects.filter(judet_id=category_judet)
-    return render(request, 'unitate_cazare/lista_locatii_din_judet.html', {'context1': context1})
+def category(request, locatii_judet):
+    context1 = UnitateCazare.objects.filter(judet_id=locatii_judet)
+    return render(request, 'unitate_cazare/locatii_judet.html', {'context1': context1})
 
 
 def detail(request, id_locatie):
@@ -61,5 +61,6 @@ def detail(request, id_locatie):
     imagini_unitate =Images.objects.filter(post_id=unitate.id)
     # print(imagini_unitate)
     judet_unitate = Judete.objects.get(id=unitate.judet_id)
-    return render(request, 'unitate_cazare/locatie_detail.html', {'unitate': unitate, 'imagini_unitate': imagini_unitate,
+    return render(request, 'unitate_cazare/destination_details.html', {'unitate': unitate, 'imagini_unitate': imagini_unitate,
                                                                   'judet_unitate': judet_unitate})
+
