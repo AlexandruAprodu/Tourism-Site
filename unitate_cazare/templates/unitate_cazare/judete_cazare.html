@@ -1,31 +1,46 @@
 {% extends "tinfo/base.html" %}
 {% load static %}
 {% block content %}
-    <div class="popular_destination_area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section_title text-center mb_70">
-                        <h3>Cautati o destinatie</h3>
-                        <p>Check out our awesome destinations</p>
-                    </div>
-                </div>
-            </div>
-            {% for judet in context %}
-                <div class="row">
-                    <div class="col-lg-2 col-md-2">
-                        <div class="single_destination">
-                            <div class="thumb">
-                                <img src="{{ judet.imagine_judet.url }}" alt="">
-                            </div>
-                            <div class="content">
-                                <p class="d-flex align-items-center">{{ judet.judet }} <a href="{% url 'unitate_cazare:locatii_judet' judet.id %}">  Click</a> </p>
 
-                            </div>
-                        </div>
-                    </div>
+    <div class="wrapper_judete">
+        {% for judet in context %}
+            <div class="flip-card-container" style="--hue: 220">
+              <div class="flip-card">
+
+                <div class="card-front">
+                  <figure>
+                    <div class="img-bg"></div>
+                    <img class='imagine' src="{{ judet.imagine_judet.url }}" alt="Descriere">
+                    <figcaption>{{ judet.judet }}</figcaption>
+                  </figure>
                 </div>
-            {% endfor %}
-        </div>
+
+                <div class="card-back">
+                  <figure>
+                    <div class="img-bg2"></div>
+                    <img src="{% static 'tinfo/img/favicon.png' %}" alt="Brohm Lake">
+                  </figure>
+
+                  <a href="{% url 'unitate_cazare:locatii_judet' judet.id %}">
+                      <button class="butonul">Click</button>
+                  </a>
+
+                  <div class="design-container">
+                    <span class="design design--1"></span>
+                    <span class="design design--2"></span>
+                    <span class="design design--3"></span>
+                    <span class="design design--4"></span>
+                    <span class="design design--5"></span>
+                    <span class="design design--6"></span>
+                    <span class="design design--7"></span>
+                    <span class="design design--8"></span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+        {% endfor %}
     </div>
+
 {% endblock %}
+

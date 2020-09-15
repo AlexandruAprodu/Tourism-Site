@@ -44,7 +44,7 @@ class UnitateCazare(models.Model):
         ('SOSEAUA', 'soseaua'),
         ('FUNDATURA', 'fundatura'),
     )
-    strada = models.CharField(max_length=40, choices=STRADA_CHOICES, default='STRADA')
+    strada = models.CharField(max_length=40, choices=STRADA_CHOICES)
     numele_strazii = models.CharField(max_length=100)
     numar = models.IntegerField()
     nr_total_camere = models.IntegerField()
@@ -56,7 +56,7 @@ class UnitateCazare(models.Model):
         ('PFA', 'pfa'),
         ('PF', 'persoana fizica'),
     )
-    forma_client = models.CharField(max_length=40, choices=FORMA_CLIENT_CHOICES, default='SRL')
+    forma_client = models.CharField(max_length=40, choices=FORMA_CLIENT_CHOICES)
     nume_client = models.CharField(max_length=100)
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
     numar_telefon = models.CharField(validators=[phone_regex], max_length=17, blank=False)

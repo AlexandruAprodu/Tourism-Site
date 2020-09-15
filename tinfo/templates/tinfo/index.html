@@ -12,7 +12,7 @@
                             <div class="slider_text text-center">
                                 <h3>Romania</h3>
                                 <p>Here are the 7 wonders of the Romanian world: sunny days, hot temperatures, warm hearts, bright minds, colourful imagination, golden fields and delicious food!</p>
-                                <a href="#" class="boxed-btn3">Explore Now</a>
+                                <a href="{% url 'unitate_cazare:judete' %}" class="boxed-btn3">Explore Now</a>
                             </div>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                             <div class="slider_text text-center">
                                 <h3>Romania</h3>
                                 <p>We don't remember days, We remember moments!</p>
-                                <a href="#" class="boxed-btn3">Explore Now</a>
+                                <a href="{% url 'unitate_cazare:judete' %}" class="boxed-btn3">Explore Now</a>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                             <div class="slider_text text-center">
                                 <h3>Romania</h3>
                                 <p>The World is a book and those who do not travel read only a page.</p>
-                                <a href="#" class="boxed-btn3">Explore Now</a>
+                                <a href="{% url 'unitate_cazare:judete' %}" class="boxed-btn3">Explore Now</a>
                             </div>
                         </div>
                     </div>
@@ -83,22 +83,46 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    {% for destination in popular_destination %}
-                        <div class="single_destination">
-                            <div class="thumb">
-                                <img src="{{ destination.image.url }}" alt="">
-                            </div>
-                            <div class="content">
-                                <p class="d-flex align-items-center">{{ destination.nume_judet }} <a href="{% url 'unitate_cazare:locatii_judet' destination.nume_judet_id %}">CLICK</a> </p>
-
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
         </div>
+    </div>
+    <div class="wrapper_judete">
+        {% for destination in popular_destination %}
+            <div class="flip-card-container" style="--hue: 220">
+              <div class="flip-card">
+
+                <div class="card-front">
+                  <figure>
+                    <div class="img-bg"></div>
+                    <img class='imagine' src="{{ destination.image.url }}" alt="Descriere">
+                    <figcaption>{{ destination.nume_judet }}</figcaption>
+                  </figure>
+                </div>
+
+                <div class="card-back">
+                  <figure>
+                    <div class="img-bg2"></div>
+                    <img src="{% static 'tinfo/img/favicon.png' %}" alt="Brohm Lake">
+                  </figure>
+
+                  <a href="{% url 'unitate_cazare:locatii_judet' destination.nume_judet_id %}">
+                      <button class="butonul">Click</button>
+                  </a>
+
+                  <div class="design-container">
+                    <span class="design design--1"></span>
+                    <span class="design design--2"></span>
+                    <span class="design design--3"></span>
+                    <span class="design design--4"></span>
+                    <span class="design design--5"></span>
+                    <span class="design design--6"></span>
+                    <span class="design design--7"></span>
+                    <span class="design design--8"></span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+        {% endfor %}
     </div>
     <!-- popular_destination_area_end  -->
     <!-- newletter_area_start  -->
@@ -143,7 +167,7 @@
                 <div class="col-lg-6">
                     <div class="section_title text-center mb_70">
                         <h3>We double dare you!</h3>
-                        <p>You only live once. Flip a coin, choose a position and refresh the page!</p>
+                        <p>You only live once! Choose a position, flip a coin, refresh the page ---> VISIT.</p>
                     </div>
                 </div>
             </div>
