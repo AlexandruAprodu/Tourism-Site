@@ -147,3 +147,4 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+DISABLE_COLLECTSTATIC=1
