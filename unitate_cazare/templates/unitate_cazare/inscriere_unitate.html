@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% load static %}
 {% block content %}
-
+<div class="inscriere_unitate_background">
     <form id="post_form" method="post" action="{% url 'unitate_cazare:inscriere_unitate' %}" enctype="multipart/form-data">
 
         {% csrf_token %}
@@ -68,32 +68,6 @@
 
 <!--        <input type="submit" name="submit" value="Submit" />-->
     </form>
-
+</div>
 {% endblock %}
 
-<div class="testbox">
-    <form action="/">
-        <div class="item">
-            <div class="name-item">
-                <p>Tip Proprietate</p>
-                {{ postForm.tip_proprietate }}
-                <p>Nume Proprietate</p>
-                {{ postForm.nume_proprietate }}
-            </div>
-        </div>
-        <div class="item">
-            <div class="name-item">
-                <p>Judet</p>
-                {{ postForm.judet }}
-                <p>Localitatea</p>
-                {{ postForm.localitatea }}
-                <p>Strada</p>
-                {{ postForm.strada }}
-                <p>Numele strazii</p>
-                {{ postForm.numele_strazii }}
-                <p>Numar</p>
-                {{ postForm.numar }}
-            </div>
-        </div>
-    </form>
-</div>

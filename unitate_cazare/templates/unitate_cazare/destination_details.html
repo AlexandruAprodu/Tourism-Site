@@ -100,12 +100,10 @@
             </div>
         </div>
     </div>
-    <div class="div_poze_locatie">
-        <span>
-            {% for poza in imagini_unitate %}
-                <img class="img_poze_locatie" src="{{ poza.image.url }}" alt="">
-            {% endfor %}
-        </span>
+    <div class="container div_poze_locatie">
+        {% for poza in imagini_unitate %}
+            <img class="img_poze_locatie" src="{{ poza.image.url }}" alt="">
+        {% endfor %}
     </div>
 
     <!-- newletter_area_start  -->

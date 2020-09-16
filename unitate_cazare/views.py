@@ -38,17 +38,18 @@ def unitate_cazare(request):
         postForm = UnitateCazareForm()
         formset = ImageFormSet(queryset=Images.objects.none())
     return render(request, 'unitate_cazare/inscriere_unitate.html',
-                  {'postForm': postForm, 'formset': formset})
+                  {'postForm': postForm, 'formset': formset, 'title': 'Inscriere Unitate'})
 
 
 def judete(request):
     context = Judete.objects.all()
-    return render(request, 'unitate_cazare/judete_cazare.html', {'context': context})
+    return render(request, 'unitate_cazare/judete_cazare.html', {'context': context, 'title': 'Categorii: Judete'})
 
 
 def category(request, locatii_judet):
     context1 = UnitateCazare.objects.filter(judet_id=locatii_judet)
-    return render(request, 'unitate_cazare/locatii_judet.html', {'context1': context1})
+    context2 = Judete.objects.get(id=locatii_judet)
+    return render(request, 'unitate_cazare/locatii_judet.html', {'context1': context1, 'title': 'Locatii din judetul' + ' ' + context2.judet})
 
 
 def detail(request, id_locatie):
@@ -59,5 +60,5 @@ def detail(request, id_locatie):
     # print(imagini_unitate)
     judet_unitate = Judete.objects.get(id=unitate.judet_id)
     return render(request, 'unitate_cazare/destination_details.html', {'unitate': unitate, 'imagini_unitate': imagini_unitate,
-                                                                  'judet_unitate': judet_unitate})
+                                                                  'judet_unitate': judet_unitate, 'title': unitate.nume_proprietate})
 

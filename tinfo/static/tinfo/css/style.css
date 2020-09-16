@@ -3,18 +3,15 @@
 /* line 1, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_extend.scss */
 
 .div_poze_locatie{
-    display: inline-block;
-    padding: 5px;
-    border: 1px black;
-    width: auto;
-    height: auto;
-
-    margin: 20px;
-    margin-left: 20px;
+    text-align: center;
 }
 .div_poze_locatie > span img{
     width: auto;
     max-height: 290px;
+}
+img.img_poze_locatie {
+    height: 290px;
+    margin: 5px;
 }
 
 
@@ -6841,7 +6838,20 @@ form {
     background: #fff;
     box-shadow: 0 0 20px 0 #333;
     }
+#post_form{
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 0 10px 0 #0404042e;
 
+}
+.inscriere_unitate_background{
+    background-image: url(https://www.oxigentour.ro/image/data/2020/Interne/Bucegi/Malaiesti/Vara/Cover%20Malaiesti%202020.jpg);
+    background-size: cover;
+
+}
 
 input, textarea, select {
     margin-bottom: 10px;

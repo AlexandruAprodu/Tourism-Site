@@ -12,7 +12,7 @@ def index(request):
     locatii_random = random.choices(context1, k=8)
     # unitati_cazare = UnitateCazare.objects.filter(judet_id=popular_destination.nume_judet)
     return render(request, 'tinfo/index.html',
-                  {'popular_destination': popular_destination, 'locatii_random': locatii_random})
+                  {'popular_destination': popular_destination, 'locatii_random': locatii_random, 'title': 'Home'})
 
 
 def footer(request):
@@ -38,7 +38,7 @@ def contact(request):
 
 
 def about(request):
-    return render(request, 'tinfo/about.html')
+    return render(request, 'tinfo/about.html', {'title': 'About Us'})
 
 
 class SearchView(ListView):
